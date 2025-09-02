@@ -24,14 +24,14 @@ pipeline {
     post {
         success {
             slackSend(
-                webhookUrl: credentials('nw'), 
+                channel: '#help-123',
                 message: "✅ Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' succeeded!",
                 color: 'good'
             )
         }
         failure {
             slackSend(
-                webhookUrl: credentials('nw'), 
+                channel: '#help-123',
                 message: "❌ Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' failed!",
                 color: 'danger'
             )
