@@ -9,7 +9,7 @@ pipeline{
                                          }
             post{
                   success{
-                         slacksend(  channel: '#johncena',
+                         slackSend(  channel: '#johncena',
                 message: "✅ Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' succeeded! 🎉",
                 color: '#36a64f'
             )                 
