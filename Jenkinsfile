@@ -1,39 +1,25 @@
 pipeline {
     agent any
-
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
+                echo "Building..."
             }
         }
     }
-
     post {
         success {
-            slackSend(
+            slackSend (
                 channel: '#help-123',
                 message: "✅ Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' succeeded!",
-                color: 'good'
+                webhookUrl: "https://hooks.slack.com/services/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"
             )
         }
         failure {
-            slackSend(
+            slackSend (
                 channel: '#help-123',
                 message: "❌ Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' failed!",
-                color: 'danger'
+                webhookUrl: "https://hooks.slack.com/services/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"
             )
         }
     }
